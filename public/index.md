@@ -6,7 +6,7 @@ description: >
     files to manage content.
 ---
 Slightly
-======
+========
 
 Slightly is a small, client-side template engine that uses static markdown files
 to manage content.

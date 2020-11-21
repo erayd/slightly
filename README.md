@@ -1,5 +1,5 @@
 Slightly
-======
+========
 
 Slightly is a small, client-side template engine that uses static markdown files
 to manage content.
@@ -8,7 +8,7 @@ to manage content.
 
 Include the following code within the head of your index page. 
 
-    <script defer src="https://slightly.erayd.net/dist/slightly-latest.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://slightly.erayd.net/dist/slightly-latest.min.js" crossorigin></script>
     <meta name="slightly-config" content="/config.json" />
 
 If a template is not specified, then the index page will be used. All paths on
@@ -55,8 +55,7 @@ Pages may include optional YAML frontmatter as follows:
     title: "Page Title",
     template: "/url/for/template.html",
     target: "#selector-to-inject-page-content",
-    prefix: "Title Prefix",
-    suffix: "Title suffix"
+    description: "This is the page meta description"
     ---
     # Markdown Document
 
@@ -64,6 +63,15 @@ Pages may include optional YAML frontmatter as follows:
 
 The parameters available here override any that may be set in the config file.
 All are optional.
+
+| Parameter     | Purpose                                            |
+| :------------ | :------------------------------------------------- |
+| `title`       | Page HTML title                                    |
+| `template`    | Path to the template file used to display pages    |
+| `target`      | HTML selector for where to inject the page content |
+| `prefix`      | Prefix to apply to the page title                  |
+| `suffix`      | Suffix to apply to the page title                  |
+| `description` | Page meta description                              |
 
 ## Content
 
@@ -100,6 +108,8 @@ them recursively.
 
 If you wish to include a table of contents, simply add the `slightly-toc`
 attribute to any element. This element will be replaced with a generated TOC.
+The TOC attribute may be used on more than one element, and may even appear
+within a content markdown file.
 
 The value of this attribute should be set to the maximum level of heading you
 wish to include. By default, all headings will be included. If there are no
