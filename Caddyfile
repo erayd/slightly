@@ -1,0 +1,33 @@
+(slightly) {
+    root ./public
+    file_server browse
+
+    @naked_path {
+        path_regexp (^|/)[^./]+$
+        file {
+            try_files {path}.md
+        }
+    }
+
+    @md_path {
+        path_regexp \.md$
+        file {
+            try_files {path} /404.md
+        }
+    }
+
+    rewrite @naked_path /
+    rewrite @md_path {http.matchers.file.relative}
+
+    handle_errors {
+        rewrite @md_path {http.matchers.file.relative}
+        rewrite * /
+        file_server
+    }
+}
+
+slightly.l.erayd.net {
+    tls internal
+
+    import slightly
+}

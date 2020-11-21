@@ -1,0 +1,18 @@
+slightly.erayd.net {
+    root /srv/slightly.erayd.net/public
+    log /srv/slightly.erayd.net/logs/access.log
+    errors /srv/slightly.erayd.net/logs/error.log
+    gzip
+
+    browse /dist
+
+    rewrite {
+        if {path} not_ends_with .md
+        to {path} {path}/ /
+    }
+
+    rewrite {
+        if {path} ends_with .md
+        to {path} /404.md
+    }
+}

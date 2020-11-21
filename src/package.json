@@ -1,0 +1,29 @@
+{
+    "name": "slightly",
+    "version": "1.0.0",
+    "description": "Simple client-side CMS",
+    "homepage": "https://github.com/erayd/slightly",
+    "license": "ISC",
+    "author": [
+        {
+            "name": "Steve Gilberd",
+            "email": "steve@erayd.net"
+        }
+    ],
+    "dependencies": {
+        "js-yaml": "^3.14.0",
+        "markdown-it": "^12.0.2"
+    },
+    "devDependencies": {
+        "ajv-cli": "^3.0.0",
+        "browserify": "^16.2.3",
+        "esmify": "^2.1.1",
+        "minify": "^6.0.1",
+        "patch-package": "^6.1.2",
+        "postinstall-postinstall": "^2.0.0",
+        "prettier": "^1.17.1"
+    },
+    "scripts": {
+        "postinstall": "patch-package"
+    }
+}

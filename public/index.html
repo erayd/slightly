@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel="preload" href="/config.json" as="fetch" crossorigin />
+        <link rel="preload" href="/template/slightly.html" as="fetch" crossorigin />
+        <link rel="preload" href="/template/main.css" as="style" />
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" as="style" />
+
+        <script defer src="/dist/slightly-1.0.0.min.js" integrity="sha256-qLYNxid6oOyVJ4PimnsA/CIsZY/cocQ42yNTrLRb8cI=" crossorigin></script>
+        <meta name="slightly-config" content="/config.json" />
+        <script>
+            let path = window.location.pathname === "/" ? "/index.md" : `${window.location.pathname}.md`;
+            let preload = document.createElement("link");
+            preload.setAttribute("rel", "preload");
+            preload.setAttribute("href", path);
+            preload.setAttribute("as", "fetch");
+            preload.setAttribute("crossorigin", "anonymous");
+            document.head.appendChild(preload);
+        </script>
+    </head>
+    <body>
+        <noscript>You must enable javascript to view this site.</noscript>
+    </body>
+</html>
+
