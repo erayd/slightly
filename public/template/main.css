@@ -1,14 +1,40 @@
+#navbar {
+    border-top: 1px dotted #000;
+    border-bottom: 1px dotted #000;
+    max-width: 900px;
+    margin: 1% auto 0 auto;
+    text-align: 
+}
+
+#navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#navbar ul li{
+    display: inline-block;
+}
+
+#navbar ul li:not(:last-of-type)::after {
+    content: " \2022";
+}
+
+#navbar a {
+    text-decoration: none;
+}
+
 #page {
     border-left: 0.5px solid #000;
-    margin: 5% auto 2% auto;
+    margin: 3% auto 2% auto;
     max-width: 900px;
-    padding: 20px;
+    padding: 5px 20px 0 20px;
 }
 
 @media(max-width: 900px) {
     #page {
         border: none;
-        margin: 0 0 1% 0;
+        margin: 1% 0 1% 0;
     }
 }
 
@@ -32,6 +58,7 @@
 
 * {
     font-family: "Open Sans", sans-serif;
+    box-sizing: border-box;
 }
 code, code * {
     font-family: monospace;

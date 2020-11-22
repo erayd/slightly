@@ -11,8 +11,6 @@ Slightly
 Slightly is a small, client-side template engine that uses static markdown files
 to manage content.
 
-Downloads are available [here](/dist/).
-
 <div slightly-toc="3"></div>
 
 ## Usage
