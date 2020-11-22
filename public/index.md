@@ -90,6 +90,31 @@ Content is provided as simple static  markdown files, with optional YAML
 [frontmatter](#yaml-frontmatter). It should be present on the webserver at the
 request path, with a `.md` file extension.
 
+### Images
+
+Images will be rendered inside `<figure>` blocks. If the image has an `alt`
+attribute, the contents of that will be appended after the image as a
+`<figcaption>`.
+
+Some basic styling of the figure is possible using the fragment portion of the
+image URL. This consists of a semicolon-separated set of key / value pairs. The
+value is optional.
+
+Any unrecognised key is added to the figure as a class, and the value is
+discarded.
+
+    ![Image caption](/url/of/image.jpg#right;w=50%;my-class)
+
+The above example will display a right-floated figure, 50% wide, with the class
+`my-class`.
+
+| Key     | Description            |
+| :------ | :--------------------- |
+| `left`  | Float the figure left  |
+| `right` | Float the figure right |
+| `w`     | Set the figure width   |
+| `h`     | Set the figure height  |
+
 ### 404 Errors
 
 In order to return the correct HTTP status code, any request for which the

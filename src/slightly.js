@@ -177,8 +177,7 @@ import MarkdownIt from "markdown-it";
                         description: undefined
                     };
                     let matches = md.match(/^(?:---\r?\n\r?(.*)\r?\n\r?---\r?\n\r?)?(.*)/su);
-                    if (!matches)
-                        throw new Error(`Invalid content document: ${mdPath}`);
+                    if (!matches) throw new Error(`Invalid content document: ${mdPath}`);
                     if (matches[1]) {
                         let yaml = jsyaml.safeLoad(matches[1]);
                         for (let key in config) {
@@ -191,6 +190,47 @@ import MarkdownIt from "markdown-it";
                     let content = new DOMParser().parseFromString(html, "text/html");
                     let toc = this.toc(content.body);
                     return { config, content, toc };
+                })
+                .then(p => {
+                    // post-process images
+                    p.content.querySelectorAll("img[src*='#']").forEach(img => {
+                        let f = document.createElement("figure");
+                        f.style.maxWidth = img.style.maxWidth;
+                        img.style.maxWidth = "100%";
+                        f.style.maxHeight = img.style.maxHeight;
+                        img.style.maxHeight = "100%";
+                        img.replaceWith(f);
+                        f.appendChild(img);
+                        if (img.alt) {
+                            let c = document.createElement("figcaption");
+                            c.textContent = img.alt;
+                            f.appendChild(c);
+                        }
+                        let [, src, format] = img.src.match(/(.*?)#(.*)/u);
+                        img.src = src;
+                        decodeURI(format)
+                            .split(";")
+                            .forEach(attr => {
+                                let [, key, val] = attr.trim().match(/^(.+?)(?:\s*=\s*(.+))?$/);
+                                switch (key) {
+                                    case "left":
+                                    case "right":
+                                        f.style.float = key;
+                                        break;
+                                    case "w":
+                                        f.style.width = val;
+                                        break;
+                                    case "h":
+                                        f.style.height = val;
+                                        break;
+                                    default:
+                                        f.classList.add(key);
+                                        break;
+                                }
+                            });
+                    });
+
+                    return p;
                 })
                 .catch(err => console.log(err))
                 .catch(err => Promise.reject(new Error(`Unable to fetch content: ${mdPath}`)));
