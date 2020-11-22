@@ -178,7 +178,7 @@ import MarkdownIt from "markdown-it";
                     };
                     let matches = md.match(/^(?:---\r?\n\r?(.*)\r?\n\r?---\r?\n\r?)?(.*)/su);
                     if (!matches)
-                        return Promise.reject(new Error(`Invalid content document: ${mdPath}`));
+                        throw new Error(`Invalid content document: ${mdPath}`);
                     if (matches[1]) {
                         let yaml = jsyaml.safeLoad(matches[1]);
                         for (let key in config) {
@@ -190,7 +190,7 @@ import MarkdownIt from "markdown-it";
                     let html = new MarkdownIt({ html: true, typographer: true }).render(matches[2]);
                     let content = new DOMParser().parseFromString(html, "text/html");
                     let toc = this.toc(content.body);
-                    return Promise.resolve({ config, content, toc });
+                    return { config, content, toc };
                 })
                 .catch(err => console.log(err))
                 .catch(err => Promise.reject(new Error(`Unable to fetch content: ${mdPath}`)));
