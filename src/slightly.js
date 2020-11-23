@@ -295,6 +295,7 @@ import MarkdownIt from "markdown-it";
                     li.appendChild(a);
                 }
                 while (top && top.childElementCount === 1) top = top.querySelector("ol");
+                top.classList.add("slightly-toc");
 
                 return top;
             };
