@@ -1,6 +1,6 @@
 (slightly) {
     root ./public
-    file_server browse
+    file_server
 
     @naked_path {
         path_regexp (^|/)[^./]+$
@@ -18,6 +18,9 @@
 
     rewrite @naked_path /
     rewrite @md_path {http.matchers.file.relative}
+
+    file_server /dist/* browse
+    header /dist/* Access-Control-Allow-Origin *
 
     handle_errors {
         rewrite @md_path {http.matchers.file.relative}
