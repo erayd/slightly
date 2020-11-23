@@ -5,7 +5,11 @@ slightly.erayd.net {
     gzip
 
     browse /dist
-    header /dist Access-Control-Allow-Origin *
+    header /dist {
+        Access-Control-Allow-Origin *
+        Cache-Control "public,max-age=2592000,immutable"
+    }
+    header /dist/version Cache-Control "public,max-age=3600"
 
     rewrite {
         if {path} not_ends_with .md
