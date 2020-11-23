@@ -194,6 +194,7 @@ import MarkdownIt from "markdown-it";
                 .then(p => {
                     // post-process images
                     p.content.querySelectorAll("img[src*='#']").forEach(img => {
+                        if (img.parentNode.childElementCount === 1) img.parentNode.replaceWith(img);
                         let f = document.createElement("figure");
                         f.style.maxWidth = img.style.maxWidth;
                         img.style.maxWidth = "100%";
@@ -211,7 +212,9 @@ import MarkdownIt from "markdown-it";
                         decodeURI(format)
                             .split(";")
                             .forEach(attr => {
-                                let [, key, val] = attr.trim().match(/^(.+?)(?:\s*=\s*(.+))?$/);
+                                let matches = attr.trim().match(/^(.+?)(?:\s*=\s*(.+))?$/);
+                                if (!matches) return;
+                                let [, key, val] = matches;
                                 switch (key) {
                                     case "left":
                                     case "right":
