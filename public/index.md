@@ -103,7 +103,7 @@ value is optional.
 Any unrecognised key is added to the figure as a class, and the value is
 discarded.
 
-    ![Image caption](/url/of/image.jpg#right;w=50%;my-class)
+    ![Image caption](/example-image.jpg#right;w=40%;my-class)
 
 The above example will display a right-floated figure, 40% wide, with the class
 `my-class`.
