@@ -84,6 +84,8 @@ All are optional.
 
 ## Content
 
+![Example image with caption.](/example-image.jpg#right;w=40%;my-class)
+
 Content is provided as simple static  markdown files, with optional YAML
 [frontmatter](#yaml-frontmatter). It should be present on the webserver at the
 request path, with a `.md` file extension.
@@ -103,7 +105,7 @@ discarded.
 
     ![Image caption](/url/of/image.jpg#right;w=50%;my-class)
 
-The above example will display a right-floated figure, 50% wide, with the class
+The above example will display a right-floated figure, 40% wide, with the class
 `my-class`.
 
 | Key     | Description             |

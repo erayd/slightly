@@ -115,3 +115,31 @@ td:first-child, th:first-child {
 tr:nth-child(2n+1) td {
     background: #EEE;
 }
+
+p {
+    margin: 0 0 10px 0;
+}
+
+p::before {
+    content: "";
+    display: block;
+    overflow: hidden;
+    width: 200px;
+}
+
+figure.my-class {
+    margin: 0 0 10px 20px;
+}
+
+figcaption {
+    font-style: italic;
+}
+
+@media(max-width: 500px) {
+    figure.my-class { min-width: 190px; }
+    p::before { width: 150px; }
+}
+
+@media(max-width: 400px) {
+    figure.my-class { min-width: 150px; }
+}
