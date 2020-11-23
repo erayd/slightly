@@ -19,8 +19,13 @@
     rewrite @naked_path /
     rewrite @md_path {http.matchers.file.relative}
 
-    file_server /dist/* browse
     header /dist/* Access-Control-Allow-Origin *
+    route {
+        header /dist/* Cache-Control "public,max-age=2592000,immutable"
+        header /dist/version Cache-Control "public,max-age=3600"
+    }
+
+    file_server /dist/* browse
 
     handle_errors {
         rewrite @md_path {http.matchers.file.relative}
