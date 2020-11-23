@@ -5,6 +5,7 @@ slightly.erayd.net {
     gzip
 
     browse /dist
+    header /dist Access-Control-Allow-Origin *
 
     rewrite {
         if {path} not_ends_with .md
