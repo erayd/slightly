@@ -106,12 +106,12 @@ discarded.
 The above example will display a right-floated figure, 50% wide, with the class
 `my-class`.
 
-| Key     | Description            |
-| :------ | :--------------------- |
-| `left`  | Float the figure left  |
-| `right` | Float the figure right |
-| `w`     | Set the figure width   |
-| `h`     | Set the figure height  |
+| Key     | Description                                    |
+| :------ | :--------------------------------------------- |
+| `left`  | Float the figure left & set the class `left`   |
+| `right` | Float the figure right & set the class `right` |
+| `w`     | Set the figure width                           |
+| `h`     | Set the figure height                          |
 
 ### 404 Errors
 
