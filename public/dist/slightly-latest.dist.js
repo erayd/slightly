@@ -1,1 +1,1 @@
-slightly-1.1.2.dist.js
+slightly-1.1.3.dist.js
