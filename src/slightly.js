@@ -216,10 +216,6 @@ import MarkdownIt from "markdown-it";
                                 if (!matches) return;
                                 let [, key, val] = matches;
                                 switch (key) {
-                                    case "left":
-                                    case "right":
-                                        f.style.float = key;
-                                        break;
                                     case "w":
                                         f.style.width = val;
                                         break;

@@ -127,6 +127,14 @@ p::before {
     width: 200px;
 }
 
+figure.left {
+    float: left;
+}
+
+figure.right {
+    float: right;
+}
+
 figure.my-class {
     margin: 10px 0 10px 20px;
 }

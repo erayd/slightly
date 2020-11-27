@@ -106,12 +106,11 @@ discarded.
     ![Image caption](/example-image.jpg#right;w=40%;my-class)
 
 The above example will display a right-floated figure, 40% wide, with the class
-`my-class`.
+`my-class`. Note that `left` and `right` are not special keywords; it's the
+user's responsibility to style them as desired.
 
 | Key     | Description             |
 | :------ | :---------------------- |
-| `left`  | Float the figure left   |
-| `right` | Float the figure right  |
 | `w`     | Set the figure width    |
 | `h`     | Set the figure height   |
 
