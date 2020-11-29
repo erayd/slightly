@@ -84,7 +84,7 @@ All are optional.
 
 ## Content
 
-![Example image with caption.](/example-image.jpg#right;w=40%;my-class)
+![Example image with caption.](/example-image.webp#right;w=40%;my-class)
 
 Content is provided as simple static  markdown files, with optional YAML
 [frontmatter](#yaml-frontmatter). It should be present on the webserver at the
