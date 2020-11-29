@@ -156,3 +156,27 @@ simply be deleted.
 If the top level of the TOC contains only one heading, it will be omitted, and
 the next level of heading will be promoted. This promotion mechanism does *not*
 affect the level of heading selected by `slightly-toc`.
+
+## Performance
+
+Slightly is designed to be fast. However, you can improve load time by
+preloading some of your site's resources in the index page `<head>`. For
+example:
+
+    <link rel="preload" href="/config.json" as="fetch" crossorigin />
+    <link rel="preload" href="/template/slightly.html" as="fetch" crossorigin />
+    <link rel="preload" href="/template/main.css" as="style" />
+
+    <script>
+        let path = window.location.pathname === "/" ? "/index.md" : `${window.location.pathname}.md`;
+        let preload = document.createElement("link");
+        preload.setAttribute("rel", "preload");
+        preload.setAttribute("href", path);
+        preload.setAttribute("as", "fetch");
+        preload.setAttribute("crossorigin", "anonymous");
+        document.head.appendChild(preload);
+    </script>
+
+In the example above, the `<link>` tags preload the Slightly config & main
+template resources, and the script preloads the markdown file for the current
+page, based on the URL.
