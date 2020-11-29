@@ -139,6 +139,15 @@ absent, then the sub-template document element will be used.
 Templates may be listed to any level, however care must be taken not to nest
 them recursively.
 
+### Content Targeting
+
+By default, rendered content will replace *the entire document*. That is
+probably not what you want. To prevent this, set a `target` either in the
+Slightly config file, or in the page frontmatter.
+
+If the `target` is set, and can be found on the page, then the content will be
+injected inside the first matching element.
+
 ### Table of Contents
 
 If you wish to include a table of contents, simply add the `slightly-toc`
