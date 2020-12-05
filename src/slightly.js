@@ -1,5 +1,6 @@
 "use strict";
 
+import { default as validateConfig } from "./schema.js";
 import * as jsyaml from "js-yaml";
 import MarkdownIt from "markdown-it";
 
@@ -31,6 +32,7 @@ import MarkdownIt from "markdown-it";
             return fetch(url)
                 .then(r => (r.ok ? r.json() : Promise.reject(r)))
                 .then(c => {
+                    if (!validateConfig(c)) return Promise.reject(new Error("Invalid config"));
                     for (let key in config) {
                         if (c.hasOwnProperty(key)) config[key] = c[key];
                     }
@@ -180,6 +182,7 @@ import MarkdownIt from "markdown-it";
                     if (!matches) throw new Error(`Invalid content document: ${mdPath}`);
                     if (matches[1]) {
                         let yaml = jsyaml.safeLoad(matches[1]);
+                        if (!validateConfig(yaml)) throw new Error("Invalid frontmatter config");
                         for (let key in config) {
                             if (config.hasOwnProperty(key) && yaml.hasOwnProperty(key))
                                 config[key] = yaml[key];

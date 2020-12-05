@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+        "title": { "type": "string" },
+        "template": { "type": "string" },
+        "target": { "type": "string" },
+        "prefix": { "type": "string" },
+        "suffix": { "type": "string" },
+        "description": { "type": "string" },
+        "env": {
+            "type": "object",
+            "additionalProperties": {
+                "type": ["string", "number", "boolean"]
+            }
+        }
+    },
+    "additionalProperties": false
+}

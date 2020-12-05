@@ -1,3 +1,4 @@
 /node_modules
+/schema.js
 *.dist.js
 *.min.js
