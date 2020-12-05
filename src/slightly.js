@@ -23,7 +23,8 @@ import MarkdownIt from "markdown-it";
         template: undefined,
         target: undefined,
         prefix: "",
-        suffix: ""
+        suffix: "",
+        env: {}
     };
 
     // load config & initialise window.site
@@ -176,7 +177,8 @@ import MarkdownIt from "markdown-it";
                         target: this.config.target,
                         prefix: this.config.prefix,
                         suffix: this.config.suffix,
-                        description: undefined
+                        description: undefined,
+                        env: Object.assign({}, this.config.env)
                     };
                     let matches = md.match(/^(?:---\r?\n\r?(.*)\r?\n\r?---\r?\n\r?)?(.*)/su);
                     if (!matches) throw new Error(`Invalid content document: ${mdPath}`);
@@ -184,8 +186,11 @@ import MarkdownIt from "markdown-it";
                         let yaml = jsyaml.safeLoad(matches[1]);
                         if (!validateConfig(yaml)) throw new Error("Invalid frontmatter config");
                         for (let key in config) {
-                            if (config.hasOwnProperty(key) && yaml.hasOwnProperty(key))
-                                config[key] = yaml[key];
+                            if (config.hasOwnProperty(key) && yaml.hasOwnProperty(key)) {
+                                if (typeof config[key] === "object")
+                                    Object.assign(config[key], yaml[key]);
+                                else config[key] = yaml[key];
+                            }
                         }
                     }
                     config.title = `${config.prefix}${config.title}${config.suffix}`;
