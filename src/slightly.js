@@ -114,6 +114,15 @@ import MarkdownIt from "markdown-it";
                         this.scripts(document);
                     }
 
+                    // variables
+                    document.querySelectorAll("[slightly-env]").forEach(el => {
+                        let matches = el.getAttribute("slightly-env").match(/^env.(.+)/u);
+                        if (matches) el.textContent = p.config.env[matches[1]] || "undefined";
+                        else
+                            el.textContent =
+                                p.config[el.getAttribute("slightly-env")] || "undefined";
+                    });
+
                     // toc
                     document.querySelectorAll("[slightly-toc]").forEach(toc => {
                         let ol = p.toc(parseInt(toc.getAttribute("slightly-toc")) || 6);

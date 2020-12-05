@@ -55,6 +55,7 @@ optional.
 | `target`    | HTML selector for where to inject the page content |
 | `prefix`    | Prefix to apply to the page title                  |
 | `suffix`    | Suffix to apply to the page title                  |
+| `env`       | Custom environment variables                       |
 
 ### YAML Frontmatter
 
@@ -81,6 +82,7 @@ All are optional.
 | `prefix`      | Prefix to apply to the page title                  |
 | `suffix`      | Suffix to apply to the page title                  |
 | `description` | Page meta description                              |
+| `env`         | Custom environment variables                       |
 
 ## Content
 
@@ -165,6 +167,19 @@ simply be deleted.
 If the top level of the TOC contains only one heading, it will be omitted, and
 the next level of heading will be promoted. This promotion mechanism does *not*
 affect the level of heading selected by `slightly-toc`.
+
+### Environment Variables
+
+Slightly's environment variables may be accessed by setting the attribute
+`slightly-env` to the name of whatever variable you wish to access. The text
+content of the element on which this attribute is defined will be replaced with
+the variable value.
+
+    <span slightly-env="env.myVariable"></span>
+
+Currently, any config value set in the site-side config or in the YAML
+frontmatter may be accessed in this manner. Object elements may be accessed
+using the `Object.Property` naming style, as in the example above.
 
 ## Performance
 
