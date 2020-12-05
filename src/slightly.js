@@ -270,7 +270,8 @@ import MarkdownIt from "markdown-it";
                 let name = h.textContent
                     .toLowerCase()
                     .trim()
-                    .replace(/[^\w-]+/gu, "-");
+                    .replace(/[^\w-]+/gu, "-")
+                    .replace(/-+$/i, "");
                 if (names.includes(name)) name += `-${i}`;
                 names.push(name);
 
