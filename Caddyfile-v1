@@ -18,6 +18,22 @@ slightly.erayd.net {
 
     rewrite {
         if {path} ends_with .md
+        to /x-md-content/{uri}
+    }
+
+    proxy /x-md-content/ {
+        without /x-md-content
+        upstream 127.0.0.2:81
+        header_downstream X-Robots-Tag noindex
+        header_downstream -Server ""
+    }
+}
+
+127.0.0.2:81 {
+    root /srv/slightly.erayd.net/public
+
+    rewrite {
+        if {path} ends_with .md
         to {path} /404.md
     }
 }
