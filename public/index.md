@@ -177,7 +177,7 @@ the variable value.
 
     <span slightly-env="env.myVariable"></span>
 
-Currently, any config value set in the site-side config or in the YAML
+Currently, any config value set in the site-wide config or in the YAML
 frontmatter may be accessed in this manner. Object elements may be accessed
 using the `Object.Property` naming style, as in the example above.
 
