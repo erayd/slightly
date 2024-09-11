@@ -32,7 +32,7 @@ slightly.erayd.net {
 }
 
 127.0.0.2:81 {
-    root /srv/slightly.erayd.net/public
+    root /websites/slightly.erayd.net/public
 
     rewrite {
         if {path} ends_with .md
