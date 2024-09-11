@@ -1,8 +1,10 @@
 slightly.erayd.net {
-    root /srv/slightly.erayd.net/public
-    log /srv/slightly.erayd.net/logs/access.log
-    errors /srv/slightly.erayd.net/logs/error.log
+    root /websites/slightly.erayd.net/public
+    log /websites/slightly.erayd.net/logs/access.log
+    errors /websites/slightly.erayd.net/logs/error.log
     gzip
+
+    tls /websites/slightly.erayd.net/slightly.pem /websites/slightly.erayd.net/slightly.key
 
     browse /dist
     header /dist {
