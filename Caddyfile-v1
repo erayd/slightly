@@ -1,4 +1,4 @@
-slightly.erayd.net {
+https://slightly.erayd.net {
     root /websites/slightly.erayd.net/public
     log /websites/slightly.erayd.net/logs/access.log
     errors /websites/slightly.erayd.net/logs/error.log
